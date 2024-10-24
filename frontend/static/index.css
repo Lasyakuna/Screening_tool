@@ -1,0 +1,67 @@
+body {
+    background-color:lightblue; /* Changed to a solid blue color */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Changed to flex-start for alignment */
+    font-family: 'Times New Roman', Times, serif;
+    overflow-y: auto; /* Allow vertical scrolling */
+    align-items: center;
+}
+
+.card {
+    background-color: lightblue;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+}
+
+h2 {
+    font-weight: bold;
+    color: #333;
+    position: sticky; /* Make the header sticky */
+    top: 0; /* Stick to the top */
+    background-color: white; /* Background color for the header */
+    z-index: 1000; /* Ensure it's above other content */
+    padding: 10px 0; /* Padding for spacing */
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+.form-control {
+    width: 55%; /* Adjusted width of input boxes */
+    margin: 0 auto; /* Centering input boxes */
+    height: 38px; /* Reduced height for input boxes */
+}
+
+.bmi-score-table {
+    background-color:lightgrey; /* Light grey background for the table */
+}
+
+.table-bordered td {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid black;
+}
+.table-bordered {
+    border: 2px solid black; /* Set table border to black */
+}
+
+.form-group label {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.text-center {
+    font-size: 42px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.mt-4 {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */  
+} 
