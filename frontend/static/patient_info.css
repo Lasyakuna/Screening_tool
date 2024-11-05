@@ -36,18 +36,6 @@ h2 {
     height: 38px; /* Reduced height for input boxes */
 }
 
-.bmi-score-table {
-    background-color:lightgrey; /* Light grey background for the table */
-}
-
-.table-bordered td {
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid black;
-}
-.table-bordered {
-    border: 2px solid black; /* Set table border to black */
-}
 
 .form-group label {
     font-family: 'Times New Roman', Times, serif;
@@ -65,3 +53,29 @@ h2 {
     justify-content: center; /* Horizontally center */
     align-items: center; /* Vertically center */  
 } 
+.bmi-score {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.yes-no-group {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+.button-container {
+    justify-content: center;
+    display: flex;
+    gap: 40px;
+    margin-top: 10px;
+  
+}
+
+.save-button, .next-button {
+    padding: 10px 20px;
+    font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+    border-radius:10%;
+    font-weight: bold;
+    font-size: large;
+    background-color: lightgray;
+}
