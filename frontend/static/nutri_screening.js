@@ -3,14 +3,33 @@ function calculateBMI() {
     const height = parseFloat(document.getElementById('height').value) / 100;
     const weight = parseFloat(document.getElementById('weight').value);
 
-    // Calculate BMI
+
+    let hasError = false;
+    if (isNaN(weight) || weight <= 0) {
+        document.getElementById("weightError").innerText = "Please enter a valid weight in kg.";
+        hasError = true;
+    }
+    if (isNaN(height) || height <= 0) {
+        document.getElementById("heightError").innerText = "Please enter a valid height in cm.";
+        hasError = true;
+    }
+    if (hasError) return;
+
     const bmi = (weight / (height * height)).toFixed(2);
+    // Calculate BMI
+    
     
     localStorage.setItem("bmi", bmi);
     // Display BMI
     document.getElementById('bmi').value = bmi;
-   
 }
+
+document.getElementById('weight').addEventListener('input', function() {
+    document.getElementById("weightError").innerText = "";
+});
+document.getElementById('height').addEventListener('input', function() {
+    document.getElementById("heightError").innerText = "";
+});
 
 function calculateScore()
 {
@@ -22,30 +41,68 @@ function calculateScore()
     let biochemicalscore = 0;
     let bmi = localStorage.getItem("bmi");
 
-    // Calculate the score based on BMI without displaying it
+  
     if (bmi >= 18.50 && bmi < 25.00) {
-        bmiscore = 0; // Normal weight
+        bmiscore = 0;
     } else if ((bmi >= 16.50 && bmi < 18.50) || (bmi >= 25.00 && bmi < 29.9)) {
-        bmiscore = 1; // Slightly underweight or overweight
+        bmiscore = 1; 
     } else {
-        bmiscore = 2; // Either very underweight (below 16.5) or obese (30 and above)
+        bmiscore = 2; 
     }
 
+    const Wyes = document.getElementById('weightLossYes');
+    const Wno = document.getElementById('weightLossNo');
+    if (!Wyes.checked && !Wno.checked) {
+        document.getElementById('weightLossError').innerText = "Please select an option.";
+    } else if (Wyes.checked) {
+        weightLossscore = 1; // Clear the error message if selection is made
+    } else {
+        document.getElementById('weightLossError').innerText = " ";
+    }
 
-    if (document.getElementById("weightLossYes").checked) {
-        weightLossscore = 1;
+    const Cyes = document.getElementById('chronicDiseaseYes');
+    const Cno = document.getElementById('chronicDiseaseNo');
+    if (!Cyes.checked && !Cno.checked) {
+        document.getElementById('chronicDiseaseError').innerText = "Please select an option.";
+    } else if (Cyes.checked) {
+        chronicDiseasescorescore = 1; // Clear the error message if selection is made
+    } else {
+        document.getElementById('chronicDiseaseError').innerText = " ";
     }
-    if (document.getElementById("chronicDiseaseYes").checked) {
-        chronicDiseasescore = 1;
+    
+    const Fyes = document.getElementById('foodIntakeYes');
+    const Fno = document.getElementById('foodIntakeNo');
+    if (!Fyes.checked && !Fno.checked) {
+        document.getElementById('foodIntakeError').innerText = "Please select an option.";
+    } else if (Fyes.checked) {
+        foodIntakescore = 1; // Clear the error message if selection is made
+    } else {
+        document.getElementById('foodIntakeError').innerText = " ";
     }
-    if (document.getElementById("foodIntakeYes").checked) {
-        foodIntakescore = 1;
-    }
-    if (document.getElementById("biochemicalYes").checked) {
-        biochemicalscore = 1;
+
+    const Byes = document.getElementById('biochemicalYes');
+    const Bno = document.getElementById('biochemicalNo');
+    if (!Byes.checked && !Bno.checked) {
+        document.getElementById('biochemicalError').innerText = "Please select an option.";
+    } else if (Byes.checked) {
+        biochemicalscorescore = 1; // Clear the error message if selection is made
+    } else {
+        document.getElementById('biocheicalError').innerText = " ";
     }
 
     totalScore = bmiscore + weightLossscore + chronicDiseasescore + foodIntakescore + biochemicalscore;
+
+    let riskLevel = '';
+
+    if (totalScore === 0) {
+        riskLevel = "Low risk (Repeat Rescreening)";
+    } else if (totalScore === 1) {
+        riskLevel = "Medium risk (Document dietary intake for three days / Screening after three days)";
+    } else {
+        riskLevel = "High risk (Initiate detailed nutritional assessment / Start nutrition care plan)";
+    }
+
+    
 
     localStorage.setItem("bmiscore", bmiscore);
     localStorage.setItem("foodIntakescore", foodIntakescore);
@@ -53,6 +110,7 @@ function calculateScore()
     localStorage.setItem("biochemicalscore", biochemicalscore);
     localStorage.setItem("chronicDiseasescore", chronicDiseasescore);
     localStorage.setItem("totalScore", totalScore);
+    localStorage.setItem("riskLevel", riskLevel);
                 
 }  
 
@@ -62,3 +120,4 @@ document.getElementById("chronicDiseasescore").innerText = localStorage.getItem(
 document.getElementById("weightLossscore").innerText = localStorage.getItem("weightLossscore");
 document.getElementById("totalScore").innerText = localStorage.getItem("totalScore");
 document.getElementById("bmiscore").innerText = localStorage.getItem("bmiscore");
+document.getElementById("riskLevel").innerText = localStorage.getItem("riskLevel");

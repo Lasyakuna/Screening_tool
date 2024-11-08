@@ -51,6 +51,11 @@
             font-weight: bold;
         }
 
+        .table-borderless span {
+            font-family: 'Times New Roman', Times, serif;
+            color:red;
+        }
+
        .button-container {
     justify-content: center;
     display: flex;
@@ -70,6 +75,15 @@
 
 }
 
+input::placeholder {
+    font-family: 'Times New Roman', Times, serif; 
+}
+
+.form-group span {
+    color: red;
+}
+
+
     </style>
 </head>
 
@@ -83,12 +97,14 @@
             <div class="col-md-5">
                 <form class="bmi-form">
                     <div class="form-group">
-                        <label for="height"><b>Height (cm):</b></label>
-                        <input type="number" class="form-control" id="height">
+                        <label for="height"><b>Height:</b></label>
+                        <input type="number" class="form-control" id="height" placeholder="Enter height in cm">
+                        <span id="heightError" class="error"></span>
                     </div>
                     <div class="form-group">
-                        <label for="weight"><b>Weight (kg):</b></label>
-                        <input type="number" class="form-control" id="weight">
+                        <label for="weight"><b>Weight:</b></label>
+                        <input type="number" class="form-control" id="weight" placeholder="Enter weight in kg">
+                        <span id="weightError" class="error"></span>
                     </div>
                     <div class="form-group">
                         <label for="bmi"><b>BMI:</b></label>
@@ -116,7 +132,7 @@
                     </tr>
                     <tr>
                         <td style="border: 1px solid black;">Underweight</td>
-                        <td style="border: 1px solid black;"> &lt; 18.5</td>
+                        <td style="border: 1px solid black;"> 16.1 - 18.5</td>
                     </tr>
                     <tr>
                         <td style="border: 1px solid black;">Healthy weight</td>
@@ -141,7 +157,7 @@
    <br>
         <!-- Additional Points Section -->
         <div class="row justify-content-left ">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <table class="table table-borderless w-100 mx-auto" style="max-width: 750px;">
                     <tbody>
                         <tr>
@@ -155,6 +171,7 @@
                                 <label for="weightLossYes">YES</label>
                                 <input type="radio" id="weightLossNo" name="weightLoss" value="No">
                                 <label for="weightLossNo">NO</label>
+                                <p><span id="weightLossError" class="error"></span></p>
                             </td>
                         </tr>
                         <tr>
@@ -168,6 +185,7 @@
                                 <label for="chronicDiseaseYes">YES</label>
                                 <input type="radio" id="chronicDiseaseNo" name="chronicDisease" value="No">
                                 <label for="chronicDiseaseNo">NO</label>
+                                <p><span id="chronicDiseaseError" class="error"></span></p>
                             </td>
                         </tr>
                         <tr>
@@ -181,6 +199,7 @@
                                 <label for="foodIntakeYes">YES</label>
                                 <input type="radio" id="foodIntakeNo" name="foodIntake" value="No">
                                 <label for="foodIntakeNo">NO</label>
+                                <p><span id="foodIntakeError" class="error"></span></p>
                             </td>
                         </tr>
                         <tr>
@@ -194,6 +213,7 @@
                                 <label for="biochemicalYes">YES</label>
                                 <input type="radio" id="biochemicalNo" name="biochemical" value="No">
                                 <label for="biochemicalNo">NO</label>
+                                <p><span id="biochemicalError" class="error"></span></p>
                             </td>
                         </tr>
                     </tbody>
