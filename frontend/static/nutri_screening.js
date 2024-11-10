@@ -55,7 +55,8 @@ function calculateScore()
     if (!Wyes.checked && !Wno.checked) {
         document.getElementById('weightLossError').innerText = "Please select an option.";
     } else if (Wyes.checked) {
-        weightLossscore = 1; // Clear the error message if selection is made
+        weightLossscore = 1;
+        document.getElementById('weightLossError').innerText = " "; // Clear the error message if selection is made
     } else {
         document.getElementById('weightLossError').innerText = " ";
     }
@@ -65,7 +66,8 @@ function calculateScore()
     if (!Cyes.checked && !Cno.checked) {
         document.getElementById('chronicDiseaseError').innerText = "Please select an option.";
     } else if (Cyes.checked) {
-        chronicDiseasescorescore = 1; // Clear the error message if selection is made
+        chronicDiseasescore = 1; 
+        document.getElementById('chronicDiseaseError').innerText = " ";// Clear the error message if selection is made
     } else {
         document.getElementById('chronicDiseaseError').innerText = " ";
     }
@@ -75,7 +77,8 @@ function calculateScore()
     if (!Fyes.checked && !Fno.checked) {
         document.getElementById('foodIntakeError').innerText = "Please select an option.";
     } else if (Fyes.checked) {
-        foodIntakescore = 1; // Clear the error message if selection is made
+        foodIntakescore = 1;
+        document.getElementById('foodIntakeError').innerText = " "; // Clear the error message if selection is made
     } else {
         document.getElementById('foodIntakeError').innerText = " ";
     }
@@ -85,9 +88,10 @@ function calculateScore()
     if (!Byes.checked && !Bno.checked) {
         document.getElementById('biochemicalError').innerText = "Please select an option.";
     } else if (Byes.checked) {
-        biochemicalscorescore = 1; // Clear the error message if selection is made
+        biochemicalscore = 1;
+        document.getElementById('biochemicalError').innerText = " "; // Clear the error message if selection is made
     } else {
-        document.getElementById('biocheicalError').innerText = " ";
+        document.getElementById('biochemicalError').innerText = " ";
     }
 
     totalScore = bmiscore + weightLossscore + chronicDiseasescore + foodIntakescore + biochemicalscore;
@@ -101,23 +105,17 @@ function calculateScore()
     } else {
         riskLevel = "High risk (Initiate detailed nutritional assessment / Start nutrition care plan)";
     }
-
-    
-
     localStorage.setItem("bmiscore", bmiscore);
-    localStorage.setItem("foodIntakescore", foodIntakescore);
     localStorage.setItem("weightLossscore", weightLossscore);
-    localStorage.setItem("biochemicalscore", biochemicalscore);
     localStorage.setItem("chronicDiseasescore", chronicDiseasescore);
+    localStorage.setItem("foodIntakescore", foodIntakescore);
+    localStorage.setItem("biochemicalscore", biochemicalscore);
     localStorage.setItem("totalScore", totalScore);
     localStorage.setItem("riskLevel", riskLevel);
+
+    alert("Scores calculated and saved!");
                 
 }  
 
-document.getElementById("foodIntakescore").innerText = localStorage.getItem("foodIntakescore");
-document.getElementById("biochemicalscore").innerText = localStorage.getItem("biochemicalscore");
-document.getElementById("chronicDiseasescore").innerText = localStorage.getItem("chronicDiseasescore");
-document.getElementById("weightLossscore").innerText = localStorage.getItem("weightLossscore");
-document.getElementById("totalScore").innerText = localStorage.getItem("totalScore");
-document.getElementById("bmiscore").innerText = localStorage.getItem("bmiscore");
-document.getElementById("riskLevel").innerText = localStorage.getItem("riskLevel");
+
+
