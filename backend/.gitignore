@@ -1,0 +1,70 @@
+# Python byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+ENV/
+*.env
+
+# Environment variable files
+.env
+.env.*
+
+# Flask instance and database files
+instance/
+*.db
+*.sqlite3
+
+# Logs and debug files
+*.log
+logs/
+
+# Cache files
+.cache/
+*.cache
+pytest_cache/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor and IDE files
+.vscode/
+.idea/
+
+# FastAPI and Uvicorn
+*.pid
+*.sock
+
+# Deployment-specific
+*.lock
+*.tar.gz
+*.whl
+
+# Temporary files
+*.tmp
+*.bak
+
+# Docker-related
+*.dockerignore
+docker-compose.override.yml
+
+# Node.js dependencies (if using Node for frontend)
+node_modules/
+
+# Build files
+build/
+dist/
+
+# Sensitive credentials (if applicable)
+*.key
+*.pem
+*.crt
+
+# Gunicorn (if used for deployment)
+gunicorn.log
+gunicorn.sock
