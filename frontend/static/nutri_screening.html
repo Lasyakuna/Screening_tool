@@ -40,7 +40,7 @@
             padding-left: 0;
         }
 
-        .form-group label {
+        .form-group label , button {
             font-family: 'Times New Roman', Times, serif;
             font-size: 20px;
         }
@@ -82,7 +82,14 @@ input::placeholder {
 .form-group span {
     color: red;
 }
-
+.date-input {
+        width: 250px; /* Adjust width as needed */
+        margin-left: 0; /* Center align */
+    }
+    .text-left {
+        text-align: left;
+        font-family: 'Times New Roman', Times, serif;
+    }
 
     </style>
 </head>
@@ -95,7 +102,19 @@ input::placeholder {
         <div class="row justify-content-center">
             <!-- Left Column: Form Inputs -->
             <div class="col-md-5">
-                <form class="bmi-form">
+                <form class="bmi-form">                  
+                    <div class="form-group" style="margin-bottom: 0px;">
+            <label for="evaluationdate"><b>Date of Evaluation:</b></label>
+            <input type="date" class="form-control date-input" id="evaluationdate">
+            <span id="dateError" class="error"></span>
+        </div>
+        </form></div>
+        <div class="col-md-5"></div>
+        </div>
+        <div class="row justify-content-center">
+            <!-- Left Column: Form Inputs -->
+            <div class="col-md-5">
+                <form class="bmi-form">                  
                     <div class="form-group">
                         <label for="height"><b>Height:</b></label>
                         <input type="number" class="form-control" id="height" placeholder="Enter height in cm">

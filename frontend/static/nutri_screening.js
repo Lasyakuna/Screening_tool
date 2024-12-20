@@ -1,5 +1,6 @@
 function calculateBMI() {
-    // Get input values
+
+    
     const height = parseFloat(document.getElementById('height').value) / 100;
     const weight = parseFloat(document.getElementById('weight').value);
 

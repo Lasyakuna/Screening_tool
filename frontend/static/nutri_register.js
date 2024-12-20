@@ -80,7 +80,7 @@ document.getElementById("register-form").addEventListener("submit", function (e)
 
   // Simulate registration success or failure
 
-    alert(`Registration Successful!\nNutritonist ID: ${nutritionistID}/nName: ${name}`);
+    alert(`Registration Successful!\nNutritonist ID: ${nutritionistID}\nName: ${name}`);
     window.location.href = "login.html"; // Redirect to login page
   
 });
