@@ -50,7 +50,7 @@ data_from_patientprofile = [
 ]
 
 data_from_nutri_screen = [
-    "select nutri_id from nutri_register where nutri_id = %s;"
+    "select nutri_id from nutri_register where nutri_id = %s"
 ]
 
 
