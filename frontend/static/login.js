@@ -9,7 +9,12 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     if (nutritionistId === "123456" && password === "Root@123") {
       alert("Login Successful!");
       window.location.href = "home.html"; // Redirect on successful login
-    } else {
+    } 
+    else if (nutritionistId === "112233" && password === "Root@111") {
+      alert("Login Successful As Admin!");
+      window.location.href = "admin.html"; // Redirect on successful login
+    } 
+    else {
       alert("Invalid Nutritionist ID or Password.");
     }
   } else {

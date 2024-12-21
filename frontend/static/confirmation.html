@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Confirmation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Nutritionist Confirmation</h1>
+
+        <div id="confirmationContainer" class="mt-4">
+            <!-- Dynamically loaded content will go here -->
+        </div>
+
+        <a href="admin.html" class="btn btn-primary mt-4">Back to Dashboard</a>
+    </div>
+
+    <script>
+        // Simulating fetching pending nutritionists from the database
+        fetch('/get_pending_nutritionists')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('confirmationContainer');
+                data.forEach(nutritionist => {
+                    // Create a div for each nutritionist
+                    const nutritionistDiv = document.createElement('div');
+                    nutritionistDiv.classList.add('card', 'mb-3');
+                    nutritionistDiv.innerHTML = `
+                        <div class="card-body">
+                            <h5 class="card-title">${nutritionist.name}</h5>
+                            <p class="card-text"><strong>Email:</strong> ${nutritionist.email}</p>
+                            <p class="card-text"><strong>Phone:</strong> ${nutritionist.phone}</p>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-success" onclick="acceptNutritionist(${nutritionist.id})">Accept</button>
+                                <button class="btn btn-danger" onclick="rejectNutritionist(${nutritionist.id})">Reject</button>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(nutritionistDiv);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+
+        // Accept the nutritionist and update status to "Accepted"
+        function acceptNutritionist(id) {
+            fetch(`/update_nutritionist_status/${id}/accepted`, {
+                method: 'PUT',
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Remove the nutritionist's card from the page
+                const nutritionistCard = document.querySelector(`[data-id='${id}']`);
+                nutritionistCard.remove();
+                alert('Nutritionist Accepted!');
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Reject the nutritionist and remove their card without updating status
+        function rejectNutritionist(id) {
+            fetch(`/update_nutritionist_status/${id}/rejected`, {
+                method: 'PUT',
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Remove the nutritionist's card from the page
+                const nutritionistCard = document.querySelector(`[data-id='${id}']`);
+                nutritionistCard.remove();
+                alert('Nutritionist Rejected!');
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
