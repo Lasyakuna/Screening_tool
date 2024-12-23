@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoring Table</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #b3d7f1;
+        }
+        .table-bordered th, .table-bordered td {
+            border: 2px solid black !important; /* Black border for all cells */
+            vertical-align: middle; /* Center-align vertically */
+            font-family: 'Times New Roman', Times, serif;
+            font-size: large;
+        
+        }
+        .notes {
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+       .button-container {
+    justify-content: center;
+    display: flex;
+    gap: 40px;
+    margin-top: 10px;
+  
+}
+
+.save-button, .back-button {
+    padding: 10px 20px;
+    font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+    border-radius:10%;
+    font-weight: bold;
+    font-size: large;
+    background-color: lightgray;
+
+}
+
+    </style>
+</head>
+
+<body>
+
+    <body style="background-color: skyblue;">
+        <div class="container">
+            <br>
+            <div class="text-center mb-4">
+                <h2 style="background-color: skyblue;font-family: 'Times New Roman', Times, serif;font-size: 42px;">
+                    <b>Conclusion</b></h2>
+            </div>
+            <div class="row justify-content-center">
+                <!-- Left Column: Form Inputs -->
+                <div class="col-md-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th><center>Criteria</center></th>
+                    <th><center>Score</center></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BMI scoring</td>
+                    <td class="highlight" id="bmiscore" style="text-align: center"></td>
+                </tr>
+                <tr>
+                    <td>Unintentional weight loss scoring</td>
+                    <td id="weightLossscore" style="text-align: center"></td>
+                </tr>
+                <tr>
+                    <td>Presence of chronic disease scoring</td>
+                    <td id="chronicDiseasescore" style="text-align: center"></td>
+                </tr>
+                <tr>
+                    <td>Unintentional reduced food intake</td>
+                    <td id="foodIntakescore" style="text-align: center" ></td>
+                </tr>
+                <tr>
+                    <td>Abnormal biochemical parameter</td>
+                    <td id="biochemicalscore" style="text-align: center"></td>
+                </tr>
+                <tr>
+                    <td><strong>Total Score:</strong></td>
+                    <td id="totalScore" style="text-align: center; font-weight: bold;"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <div class = "notes">
+            <p style="font-size: large;"><strong>Assessment Plan: </strong><span id="riskLevel"></span></p>
+           <p><label for="dietitian_note" style="font-size: large;"><b>Dietitian Note:</b></label>
+            <input type="text" class="form-control" id="dietitian_note"></p>
+            <p><label for="intervention_plan" style="font-size: large;"><b>Intervention Plan:</b></label>
+            <input type="text" class="form-control" id="intervention_plan"></p>
+        </div>
+        <div class="button-container">
+            <button class="back-button" onclick="window.location.href='nutri_screening.html'">&#8592; Back</button>
+            <button class="save-button"  onclick="calculateScore()">Save</button>
+        </div>
+        <br>
+    </div>
+    <script src="conclusion.js"></script>
+    
+</body>
+</html>
